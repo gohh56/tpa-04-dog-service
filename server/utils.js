@@ -16,7 +16,19 @@ const parsePathParameters = function(originalPath, pathWithParams) {
   //
   // TODO
   //
-  return {};
+  // /で文字列を区切る
+  // 正規表現で:始まりの要素を取得
+  // 同じindexのoriginalPathの要素を取得
+  // パラメータを返す
+  const pathWithParamsArray = pathWithParams.split('/');
+  const originalPathArray = originalPath.split('/');
+  console.log(pathWithParamsArray);
+  const pathParameters = {};
+  pathWithParamsArray.forEach((element, index) => {
+    if (element.match(/^:/)) pathParameters[element.slice(1)] = originalPathArray[index];
+  });
+  console.log(pathParameters);
+  return pathParameters;
 };
 
 module.exports = {
