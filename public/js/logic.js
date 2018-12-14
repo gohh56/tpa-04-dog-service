@@ -6,13 +6,19 @@ import {
 
 const handleFormSubmit = function(id) {
   getDog(id)
+    .catch(error => renderError('That dog does not exist.'))
     .then((dogData) => {
-      if (dogData.id !== undefined) {
-        renderDog(dogData);
-      } else {
-        renderError('That dog does not exist.');
-      }
+      renderDog(dogData);
     });
+
+  //getDog(id)
+  //  .then((dogData) => {
+  //    if (dogData.id !== undefined) {
+  //      renderDog(dogData);
+  //    } else {
+  //      renderError('That dog does not exist.');
+  //    }
+  //  });
 };
 
 export {
