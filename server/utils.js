@@ -28,11 +28,10 @@ const parsePathParameters = function(originalPath, pathWithParams) {
   for (let i = 0; i < pathWithParamsArray.length; i += 1) {
     if (pathWithParamsArray[i] !== originalPathArray[i]) {
       if (pathWithParamsArray[i].match(/^:/)) {
-        try {
-          pathParameters[pathWithParamsArray[i].slice(1)] = Number(originalPathArray[i]);
-        } catch (error) {
+        if (Number.isNaN(Number(originalPathArray[i]))) {
           return {};
         }
+        pathParameters[pathWithParamsArray[i].slice(1)] = Number(originalPathArray[i]);
       } else {
         return {};
       }

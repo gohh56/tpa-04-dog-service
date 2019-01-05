@@ -9,7 +9,7 @@ const fetchDogById = (req, res) => {
   if (dogData !== undefined) {
     res.send(dogData);
   } else {
-    res.status(400).send({});
+    res.status(400).send('Bad Request');
   }
 };
 

@@ -27,6 +27,6 @@ describe('parsePathParameters', () => {
   test('should return correct parameters', () => {
     const pathParameters = parsePathParameters('/post/test/comments/10', '/post/:postId/comments/:commentId');
     expect(pathParameters).toBeDefined();
-    expect(pathParameters.postId).toBe(NaN);
+    expect(pathParameters.postId).toBe(undefined);
   });
 });
