@@ -7,11 +7,10 @@ import {
 const handleFormSubmit = function(id) {
   getDog(id)
     .then((dogData) => {
-      if (dogData.id) {
-        renderDog(dogData);
-      } else {
-        renderError('That dog does not exist.');
-      }
+      renderDog(dogData);
+    })
+    .catch(() => {
+      renderError('That dog does not exist.');
     });
 };
 
